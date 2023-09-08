@@ -80,7 +80,7 @@ const HotelProperties = () => {
                   </div>
 
                   <div className="col-auto">
-                    <p className="text-14">2 km to city center</p>
+                    <p className="text-14"></p>
                   </div>
                 </div>
 
@@ -90,9 +90,9 @@ const HotelProperties = () => {
                 </div>
 
                 <div className="text-14 text-green-2 lh-15 mt-10">
-                  <div className="fw-500">Free cancellation</div>
+                  <div className="fw-500">免費取消</div>
                   <div className="">
-                    You can cancel later, so lock in this great price today.
+                    您可以稍後取消，所以今天把這個優惠價格鎖定吧.
                   </div>
                 </div>
 
@@ -144,10 +144,10 @@ const HotelProperties = () => {
                     8 nights, 2 adult
                   </div>
                   <div className="text-22 lh-12 fw-600 mt-5">
-                    US${item?.price}
+                    HKD${item?.price}
                   </div>
                   <div className="text-14 text-light-1 mt-5">
-                    +US$828 taxes and charges
+                    +HKD$828 税金和费用
                   </div>
 
                   <Link

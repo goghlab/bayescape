@@ -23,14 +23,14 @@ const Header1 = () => {
 
   return (
     <>
-      <header className={`header bg-dark-3 ${navbar ? "is-sticky" : ""}`}>
+      <header className={`header bg-black ${navbar ? "is-sticky" : ""}`}>
         <div className="header__container px-30 sm:px-20">
           <div className="row justify-between items-center">
             <div className="col-auto">
               <div className="d-flex items-center">
                 <Link href="/" className="header-logo mr-20">
-                  <img src="/img/general/logo-light.svg" alt="logo icon" />
-                  <img src="/img/general/logo-dark.svg" alt="logo icon" />
+                  <img src="/img/general/logo.png" alt="logo icon" />
+                  <img src="/img/general/logo.png" alt="logo icon" />
                 </Link>
                 {/* End logo */}
 
@@ -68,13 +68,13 @@ const Header1 = () => {
                     href="/others-pages/login"
                     className="button px-30 fw-400 text-14 -white bg-white h-50 text-dark-1"
                   >
-                    Become An Expert
+                    商戶加入
                   </Link>
                   <Link
                     href="/others-pages/signup"
                     className="button px-30 fw-400 text-14 border-white -outline-white h-50 text-white ml-20"
                   >
-                    Sign In / Register
+                    登入 / 註冊
                   </Link>
                 </div>
                 {/* End btn-group */}
