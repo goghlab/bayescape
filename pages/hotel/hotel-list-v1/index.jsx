@@ -25,7 +25,7 @@ const index = () => {
           <div className="row">
             <div className="col-12">
               <div className="text-center">
-                <h1 className="text-30 fw-600">Find Your Dream Luxury Hotel</h1>
+                <h1 className="text-30 fw-600">深圳酒店住宿</h1>
               </div>
               {/* End text-center */}
               <MainFilterSearchBox />
@@ -52,7 +52,7 @@ const index = () => {
               >
                 <div className="offcanvas-header">
                   <h5 className="offcanvas-title" id="offcanvasLabel">
-                    Filter Hotels
+                     篩選酒店
                   </h5>
                   <button
                     type="button"
