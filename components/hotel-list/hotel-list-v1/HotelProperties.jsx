@@ -4,17 +4,17 @@ import { Navigation, Pagination } from "swiper";
 import Image from "next/image";
 import Link from "next/link";
 
-const HotelProperties = () => {
+const HotelProperties = ({ items }) => {
   return (
     <>
-      {hotelsData.slice(0, 7).map((item) => (
+      {items.map((item) => (
         <div className="col-12" key={item?.id}>
           <div className="border-top-light pt-30">
             <div className="row x-gap-20 y-gap-20">
               <div className="col-md-auto">
                 <div className="cardImage ratio ratio-1:1 w-250 md:w-1/1 rounded-4">
                   <div className="cardImage__content">
-                    <div className="cardImage-slider rounded-4  custom_inside-slider">
+                    <div className="cardImage-slider rounded-4 custom_inside-slider">
                       <Swiper
                         className="mySwiper"
                         modules={[Pagination, Navigation]}
