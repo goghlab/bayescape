@@ -7,28 +7,58 @@ const SearchBar = () => {
   const locationSearchContent = [
     {
       id: 1,
-      name: "London",
-      address: "Greater London, United Kingdom",
+      name: "香港",
+      address: "Hong Kong, China",
     },
     {
       id: 2,
-      name: "New York",
-      address: "New York State, United States",
+      name: "深圳",
+      address: "Shenzhen, China",
     },
     {
       id: 3,
-      name: "Paris",
-      address: "France",
+      name: "廣州",
+      address: "Guangzhou, China",
     },
     {
       id: 4,
-      name: "Madrid",
-      address: "Spain",
+      name: "澳門",
+      address: "Macau, China",
     },
     {
       id: 5,
-      name: "Santorini",
-      address: "Greece",
+      name: "珠海",
+      address: "Zhuhai, China",
+    },
+    {
+      id: 6,
+      name: "東莞",
+      address: "Dongguan, China",
+    },
+    {
+      id: 7,
+      name: "惠州",
+      address: "Huizhou, China",
+    },
+    {
+      id: 8,
+      name: "中山",
+      address: "Zhongshan, China",
+    },
+    {
+      id: 8,
+      name: "江門",
+      address: "Jiangmen, China",
+    },
+    {
+      id: 9,
+      name: "佛山",
+      address: "Foshan, China",
+    },
+    {
+      id: 10,
+      name: "肇慶",
+      address: "Zhaoqing, China",
     },
   ];
 
@@ -45,12 +75,12 @@ const SearchBar = () => {
           data-bs-auto-close="true"
           data-bs-offset="0,22"
         >
-          <h4 className="text-15 fw-500 ls-2 lh-16">Location</h4>
+          <h4 className="text-15 fw-500 ls-2 lh-16">地點</h4>
           <div className="text-15 text-light-1 ls-2 lh-16">
             <input
               autoComplete="off"
               type="search"
-              placeholder="Where are you going?"
+              placeholder="你要去哪裡？?"
               className="js-search js-dd-focus"
               value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}

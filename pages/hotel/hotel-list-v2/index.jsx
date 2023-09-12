@@ -38,7 +38,7 @@ const Index = () => {
                 <br></br>
                 <br></br>
                 <br></br>
-                <h1 className="text-30 fw-600">Find Your Dream Luxury Hotel</h1>
+                <h1 className="text-30 fw-600">深圳酒店住宿🏨</h1>
               </div>
               {/* End text-center */}
               <MainFilterSearchBox />

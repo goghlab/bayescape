@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 const counters = [
-  { name: "Adults", defaultValue: 2 },
-  { name: "Children", defaultValue: 1 },
-  { name: "Rooms", defaultValue: 1 },
+  { name: "成年人", defaultValue: 2 },
+  { name: "兒童", defaultValue: 1 },
+  { name: "房間", defaultValue: 1 },
 ];
 
 const Counter = ({ name, defaultValue, onCounterChange }) => {
@@ -23,8 +23,8 @@ const Counter = ({ name, defaultValue, onCounterChange }) => {
       <div className="row y-gap-10 justify-between items-center">
         <div className="col-auto">
           <div className="text-15 lh-12 fw-500">{name}</div>
-          {name === "Children" && (
-            <div className="text-14 lh-12 text-light-1 mt-5">Ages 0 - 17</div>
+          {name === "兒童" && (
+            <div className="text-14 lh-12 text-light-1 mt-5">0 - 17 歲</div>
           )}
         </div>
         {/* End .col-auto */}
@@ -75,12 +75,12 @@ const GuestSearch = () => {
         aria-expanded="false"
         data-bs-offset="0,22"
       >
-        <h4 className="text-15 fw-500 ls-2 lh-16">Guest</h4>
+        <h4 className="text-15 fw-500 ls-2 lh-16">客人</h4>
         <div className="text-15 text-light-1 ls-2 lh-16">
-          <span className="js-count-adult">{guestCounts.Adults}</span> adults -{" "}
+          <span className="js-count-adult">{guestCounts.Adults}</span> 成年人 -{" "}
           <span className="js-count-child">{guestCounts.Children}</span>{" "}
-          childeren - <span className="js-count-room">{guestCounts.Rooms}</span>{" "}
-          room
+          兒童 - <span className="js-count-room">{guestCounts.Rooms}</span>{" "}
+          房間
         </div>
       </div>
       {/* End guest */}
