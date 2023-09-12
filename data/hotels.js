@@ -1,10 +1,10 @@
 export const hotelsData = [
   {
     id: 1,
-    tag: "Breakfast Included",
+    tag: "Breakft Included",
     slideImg: ["/img/hotels/1.png"],
     img: "/img/hotels/1.png",
-    title: "The Montcalm At Brewery London City",
+    title: "eeontcalm At Brewery London City",
     location: "Westminster Borough, London",
     ratings: "4.7",
     numberOfReviews: "3014",

@@ -18,13 +18,13 @@ const Sidebar = () => {
       {/* End find map */}
 
       <div className="sidebar__item -no-border">
-        <h5 className="text-18 fw-500 mb-10">Search by property name</h5>
+        <h5 className="text-18 fw-500 mb-10">按酒店名稱搜索</h5>
         <SearchBox />
       </div>
       {/* End search box */}
 
       <div className="sidebar__item">
-        <h5 className="text-18 fw-500 mb-10">Deals</h5>
+        <h5 className="text-18 fw-500 mb-10">優惠</h5>
         <div className="sidebar-checkbox">
           <div className="row y-gap-5 items-center">
             <DealsFilter />
@@ -34,7 +34,7 @@ const Sidebar = () => {
       {/* End deals filter */}
 
       <div className="sidebar__item">
-        <h5 className="text-18 fw-500 mb-10">Popular Filters</h5>
+        <h5 className="text-18 fw-500 mb-10">熱門篩選</h5>
         <div className="sidebar-checkbox">
           <PopularFilters />
         </div>
@@ -43,7 +43,7 @@ const Sidebar = () => {
       {/* End popular filter */}
 
       <div className="sidebar__item pb-30">
-        <h5 className="text-18 fw-500 mb-10">Nightly Price</h5>
+        <h5 className="text-18 fw-500 mb-10">每晚價格</h5>
         <div className="row x-gap-10 y-gap-30">
           <div className="col-12">
             <PirceSlider />
@@ -53,7 +53,7 @@ const Sidebar = () => {
       {/* End Nightly priceslider */}
 
       <div className="sidebar__item">
-        <h5 className="text-18 fw-500 mb-10">Aminities</h5>
+        <h5 className="text-18 fw-500 mb-10">便利設施</h5>
         <div className="sidebar-checkbox">
           <AminitesFilter />
         </div>
@@ -62,7 +62,7 @@ const Sidebar = () => {
       {/* End Aminities filter */}
 
       <div className="sidebar__item">
-        <h5 className="text-18 fw-500 mb-10">Star Rating</h5>
+        <h5 className="text-18 fw-500 mb-10">星級評分</h5>
         <div className="row x-gap-10 y-gap-10 pt-10">
           <RatingsFilter />
         </div>
@@ -70,7 +70,7 @@ const Sidebar = () => {
       {/* End rating filter */}
 
       <div className="sidebar__item">
-        <h5 className="text-18 fw-500 mb-10">Guest Rating</h5>
+        <h5 className="text-18 fw-500 mb-10">客戶評分</h5>
         <div className="sidebar-checkbox">
           <GuestRatingFilters />
         </div>
@@ -78,7 +78,7 @@ const Sidebar = () => {
       {/* End Guest Rating */}
 
       <div className="sidebar__item">
-        <h5 className="text-18 fw-500 mb-10">Style</h5>
+        <h5 className="text-18 fw-500 mb-10">風格</h5>
         <div className="sidebar-checkbox">
           <StyleFilter />
         </div>
@@ -86,7 +86,7 @@ const Sidebar = () => {
       {/* End style filter */}
 
       <div className="sidebar__item">
-        <h5 className="text-18 fw-500 mb-10">Neighborhood</h5>
+        <h5 className="text-18 fw-500 mb-10">附近地區</h5>
         <div className="sidebar-checkbox">
           <NeighborhoddFilter />
         </div>

@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-const Pagination = () => {
-  const [currentPage, setCurrentPage] = useState(1);
+const Pagination = ({ currentPage, onPageChange, totalItems, itemsPerPage }) => {
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
 
   const handlePageClick = (pageNumber) => {
-    setCurrentPage(pageNumber);
+    onPageChange(pageNumber);
   };
 
   const renderPage = (pageNumber, isActive = false) => {
@@ -21,7 +21,6 @@ const Pagination = () => {
   };
 
   const renderPages = () => {
-    const totalPages = 5; // Change this to the actual total number of pages
     const pageNumbers = [];
     for (let i = 1; i <= totalPages; i++) {
       pageNumbers.push(i);
@@ -36,7 +35,11 @@ const Pagination = () => {
     <div className="border-top-light mt-30 pt-30">
       <div className="row x-gap-10 y-gap-20 justify-between md:justify-center">
         <div className="col-auto md:order-1">
-          <button className="button -blue-1 size-40 rounded-full border-light">
+          <button
+            className="button -blue-1 size-40 rounded-full border-light"
+            onClick={() => onPageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+          >
             <i className="icon-chevron-left text-12" />
           </button>
         </div>
@@ -48,7 +51,7 @@ const Pagination = () => {
               <div className="size-40 flex-center rounded-full">...</div>
             </div>
             <div className="col-auto">
-              <div className="size-40 flex-center rounded-full">20</div>
+              <div className="size-40 flex-center rounded-full">{totalPages}</div>
             </div>
           </div>
 
@@ -58,13 +61,22 @@ const Pagination = () => {
 
           <div className="text-center mt-30 md:mt-10">
             <div className="text-14 text-light-1">
-              1 – 20 of 300+ properties found
+              {`${
+                (currentPage - 1) * itemsPerPage + 1
+              } - ${Math.min(
+                currentPage * itemsPerPage,
+                totalItems
+              )} of ${totalItems} properties found`}
             </div>
           </div>
         </div>
 
         <div className="col-auto md:order-2">
-          <button className="button -blue-1 size-40 rounded-full border-light">
+          <button
+            className="button -blue-1 size-40 rounded-full border-light"
+            onClick={() => onPageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+          >
             <i className="icon-chevron-right text-12" />
           </button>
         </div>

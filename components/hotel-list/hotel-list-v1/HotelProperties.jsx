@@ -4,17 +4,17 @@ import { Navigation, Pagination } from "swiper";
 import Image from "next/image";
 import Link from "next/link";
 
-const HotelProperties = () => {
+const HotelProperties = ({ items }) => {
   return (
     <>
-      {hotelsData.slice(0, 7).map((item) => (
+      {items.map((item) => (
         <div className="col-12" key={item?.id}>
           <div className="border-top-light pt-30">
             <div className="row x-gap-20 y-gap-20">
               <div className="col-md-auto">
                 <div className="cardImage ratio ratio-1:1 w-250 md:w-1/1 rounded-4">
                   <div className="cardImage__content">
-                    <div className="cardImage-slider rounded-4  custom_inside-slider">
+                    <div className="cardImage-slider rounded-4 custom_inside-slider">
                       <Swiper
                         className="mySwiper"
                         modules={[Pagination, Navigation]}
@@ -71,7 +71,7 @@ const HotelProperties = () => {
                       data-x-click="mapFilter"
                       className="d-block text-14 text-blue-1 underline"
                     >
-                      Show on map
+                      地圖上顯示
                     </button>
                   </div>
 
@@ -85,8 +85,8 @@ const HotelProperties = () => {
                 </div>
 
                 <div className="text-14 lh-15 mt-20">
-                  <div className="fw-500">King Room</div>
-                  <div className="text-light-1">1 extra-large double bed</div>
+                  <div className="fw-500"></div>
+                  <div className="text-light-1"></div>
                 </div>
 
                 <div className="text-14 text-green-2 lh-15 mt-10">
@@ -99,7 +99,7 @@ const HotelProperties = () => {
                 <div className="row x-gap-10 y-gap-10 pt-20">
                   <div className="col-auto">
                     <div className="border-light rounded-100 py-5 px-20 text-14 lh-14">
-                      Breakfast
+                      早餐
                     </div>
                   </div>
 
@@ -111,13 +111,13 @@ const HotelProperties = () => {
 
                   <div className="col-auto">
                     <div className="border-light rounded-100 py-5 px-20 text-14 lh-14">
-                      Spa
+                      水療
                     </div>
                   </div>
 
                   <div className="col-auto">
                     <div className="border-light rounded-100 py-5 px-20 text-14 lh-14">
-                      Bar
+                     酒吧
                     </div>
                   </div>
                 </div>
@@ -141,7 +141,6 @@ const HotelProperties = () => {
 
                 <div className="">
                   <div className="text-14 text-light-1 mt-50 md:mt-20">
-                    8 nights, 2 adult
                   </div>
                   <div className="text-22 lh-12 fw-600 mt-5">
                     HKD${item?.price}
@@ -154,7 +153,7 @@ const HotelProperties = () => {
                     href={`/hotel/hotel-single-v1/${item.id}`}
                     className="button -md -dark-1 bg-blue-1 text-white mt-24"
                   >
-                    See Availability{" "}
+                    看看是否有空房{" "}
                     <div className="icon-arrow-top-right ml-15"></div>
                   </Link>
                 </div>
