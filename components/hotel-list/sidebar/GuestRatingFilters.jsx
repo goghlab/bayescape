@@ -1,9 +1,9 @@
 const GuestRatingFilters = () => {
   const options = [
-    { label: "Any", value: "", count: 92 },
-    { label: "Wonderful 4.5+", value: "4.5", count: 45 },
-    { label: "Very good 4+", value: "4", count: 21 },
-    { label: "Good 3.5+", value: "3.5", count: 78 },
+    { label: "任何", value: "", count: 92 },
+    { label: "最好 4.5+", value: "4.5", count: 45 },
+    { label: "非常好 4+", value: "4", count: 21 },
+    { label: "幾好+", value: "3.5", count: 78 },
   ];
 
   return (

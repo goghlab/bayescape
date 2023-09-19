@@ -23,7 +23,7 @@ const Header1 = () => {
 
   return (
     <>
-      <header className={`header bg-white ${navbar ? "is-sticky" : ""}`}>
+      <header className={`header bg-black ${navbar ? "is-sticky" : ""}`}>
         <div className="header__container px-30 sm:px-20">
           <div className="row justify-between items-center">
             <div className="col-auto">
@@ -36,7 +36,7 @@ const Header1 = () => {
 
                 <div className="header-menu">
                   <div className="header-menu__content">
-                    <MainMenu style="text-dark-1" />
+                    <MainMenu style="text-white" />
                   </div>
                 </div>
                 {/* End header-menu */}
@@ -48,7 +48,7 @@ const Header1 = () => {
             <div className="col-auto">
               <div className="d-flex items-center">
                 <div className="row x-gap-20 items-center xxl:d-none">
-                  <CurrenctyMegaMenu textClass="text-dark-1" />
+                  <CurrenctyMegaMenu textClass="text-white" />
                   {/* End Megamenu for Currencty */}
 
                   {/* Start vertical devider*/}
@@ -57,7 +57,7 @@ const Header1 = () => {
                   </div>
                   {/* End vertical devider*/}
 
-                  <LanguageMegaMenu textClass="text-dark-1" />
+                  <LanguageMegaMenu textClass="text-white" />
                   {/* End Megamenu for Language */}
                 </div>
                 {/* End language and currency selector */}
@@ -80,7 +80,7 @@ const Header1 = () => {
                 {/* End btn-group */}
 
                 {/* Start mobile menu icon */}
-                <div className="d-none xl:d-flex x-gap-20 items-center pl-30 text-dark-1">
+                <div className="d-none xl:d-flex x-gap-20 items-center pl-30 text-white">
                   <div>
                     <Link
                       href="/others-pages/login"

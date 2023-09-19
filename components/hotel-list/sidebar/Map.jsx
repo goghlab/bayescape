@@ -12,7 +12,7 @@ const Map = () => {
         data-x-click="mapFilter"
       >
         <i className="icon-destination text-22 mr-10" />
-        Show on map
+        在地圖上顯示
       </button>
     </div>
   );

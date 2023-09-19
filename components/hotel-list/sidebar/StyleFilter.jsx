@@ -1,10 +1,10 @@
 const StyleFilter = () => {
   const checkboxes = [
-    { label: "Budget", count: 92 },
-    { label: "Mid-range", count: 45 },
-    { label: "Luxury", count: 21 },
-    { label: "Family-friendly", count: 78 },
-    { label: "Business", count: 679 },
+    { label: "經濟", count: 92 },
+    { label: "中價", count: 45 },
+    { label: "豪華", count: 21 },
+    { label: "適合家庭", count: 78 },
+    { label: "商務", count: 679 },
   ];
 
   return (

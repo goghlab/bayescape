@@ -28,13 +28,12 @@ const SignUp = () => {
 
                 <div className="row y-gap-20 pt-30">
                   <div className="col-12">
-                    <div className="text-center">or sign in with</div>
+                    <div className="text-center">或使用登入</div>
                   </div>
                   <LoginWithSocial />
                   <div className="col-12">
                     <div className="text-center px-30">
-                      By creating an account, you agree to our Terms of Service
-                      and Privacy Statement.
+                     通過建立帳戶，您同意我們的服務條款和隱私聲明。
                     </div>
                   </div>
                 </div>

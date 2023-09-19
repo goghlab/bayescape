@@ -6,7 +6,6 @@ import AminitesFilter from "../sidebar/AminitesFilter";
 import RatingsFilter from "../sidebar/RatingsFilter";
 import GuestRatingFilters from "../sidebar/GuestRatingFilters";
 import StyleFilter from "../sidebar/StyleFilter";
-import NeighborhoddFilter from "../sidebar/NeighborhoddFilter";
 import PirceSlider from "../sidebar/PirceSlider";
 
 const Sidebar = () => {
@@ -86,9 +85,7 @@ const Sidebar = () => {
       {/* End style filter */}
 
       <div className="sidebar__item">
-        <h5 className="text-18 fw-500 mb-10">附近地區</h5>
         <div className="sidebar-checkbox">
-          <NeighborhoddFilter />
         </div>
         {/* End Sidebar-checkbox */}
       </div>

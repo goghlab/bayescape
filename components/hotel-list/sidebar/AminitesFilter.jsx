@@ -1,10 +1,10 @@
 const AmenitiesFilter = () => {
   const amenities = [
-    { name: "Breakfast Included", count: 92 },
-    { name: "Romantic", count: 45 },
-    { name: "Airport Transfer", count: 21 },
-    { name: "WiFi Included", count: 78 },
-    { name: "5 Star", count: 679 },
+    { name: "包括早餐", count: 92 },
+    { name: "浪漫", count: 45 },
+    { name: "機場接送", count: 21 },
+    { name: "包含WiFi", count: 78 },
+    { name: "五星级", count: 679 },
   ];
 
   return (

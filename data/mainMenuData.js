@@ -9,7 +9,7 @@ export const homeItems = [
   },
   {
     name: "中港車牌國內保險",
-    routePath: "/others-pages/about",
+    routePath: "/others-pages/licence",
   },
   {
     name: "汽車服務",
