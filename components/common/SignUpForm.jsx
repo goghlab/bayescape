@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import Link from 'next/link';  // Correct import statement
+import React, { useState } from 'react';
+import Link from 'next/link';
 
 const SignUpForm = () => {
   const [formData, setFormData] = useState({
@@ -22,9 +22,6 @@ const SignUpForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-      // Log the form data to the console
-  console.log('Form Data:', formData);
-
     try {
       const response = await fetch('/api/signup', {
         method: 'POST',
@@ -40,7 +37,7 @@ const SignUpForm = () => {
         console.error('User registration failed.');
       }
     } catch (error) {
-      console.error('Error registering user:', error);
+      console.error('Error registering user:', error.message);
     }
   };
 
