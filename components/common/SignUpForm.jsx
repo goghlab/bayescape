@@ -46,75 +46,97 @@ const SignUpForm = () => {
       <div className="col-12">
         <h1 className="text-22 fw-500">灣程BayEscape用戶註冊</h1>
         <p className="mt-10">
-          已有帳戶嗎?{" "}
-          <Link href="/others-pages/login" className="text-blue-1">
-            登入
-          </Link>
+          已有帳戶嗎?{' '}
+          <Link href="/others-pages/login">登入</Link>
         </p>
       </div>
 
       <div className="col-12">
         <div className="form-input">
+          <label htmlFor="firstName" className="lh-1 text-14 text-light-1">
+            名字
+          </label>
           <input
             type="text"
+            id="firstName"
             name="firstName"
+            autoComplete="given-name"
             value={formData.firstName}
             onChange={handleChange}
             required
           />
-          <label className="lh-1 text-14 text-light-1">名字</label>
         </div>
       </div>
 
       <div className="col-12">
         <div className="form-input">
+          <label htmlFor="lastName" className="lh-1 text-14 text-light-1">
+            姓氏
+          </label>
           <input
             type="text"
+            id="lastName"
             name="lastName"
+            autoComplete="family-name"
             value={formData.lastName}
             onChange={handleChange}
             required
           />
-          <label className="lh-1 text-14 text-light-1">姓氏</label>
         </div>
       </div>
 
       <div className="col-12">
         <div className="form-input">
+          <label htmlFor="email" className="lh-1 text-14 text-light-1">
+            電子郵件
+          </label>
           <input
             type="text"
+            id="email"
             name="email"
+            autoComplete="email"
             value={formData.email}
             onChange={handleChange}
             required
           />
-          <label className="lh-1 text-14 text-light-1">電子郵件</label>
         </div>
       </div>
 
       <div className="col-12">
         <div className="form-input">
+          <label htmlFor="password" className="lh-1 text-14 text-light-1">
+            密碼
+          </label>
           <input
             type="password"
+            id="password"
             name="password"
+            autoComplete="new-password"
             value={formData.password}
             onChange={handleChange}
             required
           />
-          <label className="lh-1 text-14 text-light-1">密碼</label>
         </div>
       </div>
 
       <div className="col-12">
         <div className="form-input">
+          <label
+            htmlFor="confirmPassword"
+            className="lh-1 text-14 text-light-1"
+          >
+            確認密碼
+          </label>
           <input
             type="password"
+            id="confirmPassword"
             name="confirmPassword"
+            autoComplete="new-password"
+            placeholder="Confirm Password"
             value={formData.confirmPassword}
             onChange={handleChange}
             required
           />
-          <label className="lh-1 text-14 text-light-1">確認密碼</label>
         </div>
       </div>
 
@@ -123,7 +145,9 @@ const SignUpForm = () => {
           <div className="form-checkbox mt-5">
             <input
               type="checkbox"
+              id="subscribe"
               name="subscribe"
+              autoComplete="off"
               checked={formData.subscribe}
               onChange={(e) =>
                 setFormData({

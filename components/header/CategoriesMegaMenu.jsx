@@ -12,12 +12,7 @@ import {
 const CategoriesMegaMenu = () => {
   const router = useRouter();
 
-  const itemList = [
-    "酒店",
-    "精選優惠",
-    "旅行團",
-    "景點門票",
-  ];
+  const itemList = ["酒店", "精選優惠", "旅行團", "景點門票"];
 
   return (
     <Tabs className="tabs -underline-2 js-tabs">
@@ -30,64 +25,62 @@ const CategoriesMegaMenu = () => {
           </Tab>
         ))}
       </TabList>
-      {/* End tab-controls */}
 
-      <div className="tabs__content js-tabs-content">
-        {categorieMegaMenuItems.map((megaMenu) => (
-          <TabPanel key={megaMenu.id}>
-            {megaMenu?.menuCol?.map((megaCol, i) => (
-              <ul className="mega__content" key={i}>
-                <li className="mega__grid">
-                  {megaCol?.menuItems?.map((item) => (
-                    <div className="mega__item" key={item.id}>
-                      <div className="text-15 fw-500">{item.title}</div>
-                      <div className="y-gap-5 text-15 pt-5">
-                        {item?.menuList?.map((list, i) => (
-                          <div
-                            key={i}
-                            className={
-                              isActiveLink(list.routePath, router.asPath)
-                                ? "current"
-                                : ""
-                            }
-                          >
-                            <Link href={list.routePath}>{list.name}</Link>
-                          </div>
-                        ))}
-                      </div>
+      {itemList.map((item, i) => (
+        <TabPanel key={i}>
+          {/* Your content for each TabPanel goes here */}
+          {categorieMegaMenuItems[i]?.menuCol?.map((megaCol, j) => (
+            <ul className="mega__content" key={j}>
+              {/* Rest of your code for rendering content */}
+              <li className="mega__grid">
+                {megaCol?.menuItems?.map((item) => (
+                  <div className="mega__item" key={item.id}>
+                    <div className="text-15 fw-500">{item.title}</div>
+                    <div className="y-gap-5 text-15 pt-5">
+                      {item?.menuList?.map((list, k) => (
+                        <div
+                          key={k}
+                          className={
+                            isActiveLink(list.routePath, router.asPath)
+                              ? "current"
+                              : ""
+                          }
+                        >
+                          <Link href={list.routePath}>{list.name}</Link>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </li>
-                {/* End mega menu list left */}
-
-                <li className="mega__image d-flex relative">
-                  <Image
-                    width={270}
-                    height={300}
-                    src={megaCol?.megaBanner}
-                    alt="image"
-                    className="rounded-4 js-lazy"
-                  />
-
-                  <div className="absolute w-full h-full px-30 py-24">
-                    <div className="text-22 fw-500 lh-15 text-white">
-                      {megaCol?.title}
-                    </div>
-                    <Link
-                      href={megaCol?.btnRoute}
-                      className="button text-uppercase h-50 px-30 -blue-1 text-dark-1 bg-white mt-20 d-inline-flex"
-                    >
-                      {megaCol?.btnText}
-                    </Link>
                   </div>
-                </li>
-                {/* End mega menu right images */}
-              </ul>
-            ))}
-          </TabPanel>
-        ))}
-      </div>
-      {/* End tab_content */}
+                ))}
+              </li>
+              {/* End mega menu list left */}
+
+              <li className="mega__image d-flex relative">
+                <Image
+                  width={270}
+                  height={300}
+                  src={megaCol?.megaBanner}
+                  alt="image"
+                  className="rounded-4 js-lazy"
+                />
+
+                <div className="absolute w-full h-full px-30 py-24">
+                  <div className="text-22 fw-500 lh-15 text-white">
+                    {megaCol?.title}
+                  </div>
+                  <Link
+                    href={megaCol?.btnRoute}
+                    className="button text-uppercase h-50 px-30 -blue-1 text-dark-1 bg-white mt-20 d-inline-flex"
+                  >
+                    {megaCol?.btnText}
+                  </Link>
+                </div>
+              </li>
+              {/* End mega menu right images */}
+            </ul>
+          ))}
+        </TabPanel>
+      ))}
     </Tabs>
   );
 };

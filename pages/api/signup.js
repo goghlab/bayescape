@@ -20,6 +20,9 @@ const handler = async (req, res) => {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
 
+     // Send verification email
+     await user.sendEmailVerification();
+
     return res.status(201).json({ message: 'User registered successfully', user });
   } catch (error) {
     console.error('Error registering user:', error);
