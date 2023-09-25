@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import axios from 'axios';
+import { useRouter } from 'next/router'; // Import the useRouter hook
 
 const SignUpForm = () => {
   const [formData, setFormData] = useState({
@@ -13,6 +14,7 @@ const SignUpForm = () => {
   });
 
   const [passwordMatchError, setPasswordMatchError] = useState('');
+  const router = useRouter(); // Initialize the router
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,23 +24,14 @@ const SignUpForm = () => {
     }));
   };
 
-  const getErrorMessage = () => {
-    if (passwordMatchError) {
-      return passwordMatchError;
-    } else {
-      return '其他錯誤訊息'; // Add more conditions as needed
-    }
-  };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log('Handle submit called');
+
     try {
       const { firstName, lastName, email, password, confirmPassword, subscribe } = formData;
 
       if (password !== confirmPassword) {
-        setPasswordMatchError('密碼不相符，請再試一次。');
-        console.error('Passwords do not match.');
+        setPasswordMatchError('Passwords do not match. Please try again.');
         return;
       } else {
         setPasswordMatchError('');
@@ -46,12 +39,11 @@ const SignUpForm = () => {
 
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(email)) {
-        setPasswordMatchError('無效的電子郵件格式。');
-        console.error('Invalid email format.');
+        setPasswordMatchError('Invalid email format. Please provide a valid email address.');
         return;
       }
 
-      console.log('Making Axios POST request...');
+      // Make Axios POST request
       const response = await axios.post('/api/signup', {
         firstName,
         lastName,
@@ -64,19 +56,17 @@ const SignUpForm = () => {
           'Content-Type': 'application/json',
         }
       });
+
       console.log('Axios POST request response:', response.data);
 
-      // Add further actions after successful registration if needed
-
+      // Redirect to login after successful signup and account activation
+      router.push('/others-pages/login');
     } catch (error) {
       console.error('User registration failed.', error.message);
-
       let errorMessage = 'Error registering user';
-
       if (error.response && error.response.data && error.response.data.message) {
         errorMessage = error.response.data.message;
       }
-
       setPasswordMatchError(errorMessage);
     }
   };
