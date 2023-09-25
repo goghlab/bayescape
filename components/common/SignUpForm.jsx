@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
+import axios from 'axios';
 
 const SignUpForm = () => {
   const [formData, setFormData] = useState({
@@ -11,33 +12,72 @@ const SignUpForm = () => {
     subscribe: false,
   });
 
+  const [passwordMatchError, setPasswordMatchError] = useState('');
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
+    setFormData((prevFormData) => ({
+      ...prevFormData,
       [name]: value,
-    });
+    }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const getErrorMessage = () => {
+    if (passwordMatchError) {
+      return passwordMatchError;
+    } else {
+      return '其他錯誤訊息'; // Add more conditions as needed
+    }
+  };
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    console.log('Handle submit called');
     try {
-      const response = await fetch('/api/signup', {
-        method: 'POST',
+      const { firstName, lastName, email, password, confirmPassword, subscribe } = formData;
+
+      if (password !== confirmPassword) {
+        setPasswordMatchError('密碼不相符，請再試一次。');
+        console.error('Passwords do not match.');
+        return;
+      } else {
+        setPasswordMatchError('');
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        setPasswordMatchError('無效的電子郵件格式。');
+        console.error('Invalid email format.');
+        return;
+      }
+
+      console.log('Making Axios POST request...');
+      const response = await axios.post('/api/signup', {
+        firstName,
+        lastName,
+        email,
+        password,
+        confirmPassword,
+        subscribe,
+      }, {
         headers: {
           'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+        }
       });
+      console.log('Axios POST request response:', response.data);
 
-      if (response.ok) {
-        console.log('User registered successfully!');
-      } else {
-        console.error('User registration failed.');
-      }
+      // Add further actions after successful registration if needed
+
     } catch (error) {
-      console.error('Error registering user:', error.message);
+      console.error('User registration failed.', error.message);
+
+      let errorMessage = 'Error registering user';
+
+      if (error.response && error.response.data && error.response.data.message) {
+        errorMessage = error.response.data.message;
+      }
+
+      setPasswordMatchError(errorMessage);
     }
   };
 
@@ -46,8 +86,7 @@ const SignUpForm = () => {
       <div className="col-12">
         <h1 className="text-22 fw-500">灣程BayEscape用戶註冊</h1>
         <p className="mt-10">
-          已有帳戶嗎?{' '}
-          <Link href="/others-pages/login">登入</Link>
+          已有帳戶嗎? <Link href="/others-pages/login">登入</Link>
         </p>
       </div>
 
@@ -104,7 +143,10 @@ const SignUpForm = () => {
 
       <div className="col-12">
         <div className="form-input">
-          <label htmlFor="password" className="lh-1 text-14 text-light-1">
+          <label
+            htmlFor="password"
+            className="lh-1 text-14 text-light-1"
+          >
             密碼
           </label>
           <input
@@ -150,10 +192,10 @@ const SignUpForm = () => {
               autoComplete="off"
               checked={formData.subscribe}
               onChange={(e) =>
-                setFormData({
-                  ...formData,
+                setFormData((prevFormData) => ({
+                  ...prevFormData,
                   subscribe: e.target.checked,
-                })
+                }))
               }
             />
             <div className="form-checkbox__mark">
@@ -164,6 +206,14 @@ const SignUpForm = () => {
             透過電子郵件寄送BayEscape獨家優惠給我。如隱私政策中所述，我隨時可以選擇取消訂閱。
           </div>
         </div>
+      </div>
+
+      <div className="col-12">
+        {passwordMatchError && (
+          <div className="error-message" style={{ color: 'red' }}>
+            * {getErrorMessage()}
+          </div>
+        )}
       </div>
 
       <div className="col-12">

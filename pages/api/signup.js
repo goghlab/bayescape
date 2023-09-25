@@ -1,41 +1,46 @@
 import { initializeApp } from 'firebase/app';
-import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, sendEmailVerification } from 'firebase/auth';
 import firebaseConfig from '../firebase/firebaseConfig';
 
 const app = initializeApp(firebaseConfig);
 
-const handler = async (req, res) => {
+const handleUserRegistration = async (req, res) => {
   try {
-    if (req.method !== 'POST') {
-      return res.status(405).json({ message: 'Method Not Allowed' });
-    }
-
     const { firstName, lastName, email, password } = req.body;
 
-    if (!firstName || !lastName || !email || !password) {
-      return res.status(400).json({ message: 'Please provide all required fields' });
+    if (password !== req.body.confirmPassword) {
+      return res.status(400).json({ message: 'Passwords do not match. Please try again.' });
     }
 
-    const auth = getAuth(app);
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    const user = userCredential.user;
+    if (password.length < 6) {
+      return res.status(400).json({ message: 'Password is too weak. It must be at least 6 characters long.' });
+    }
 
-     // Send verification email
-     await user.sendEmailVerification();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({ message: 'Invalid email format. Please provide a valid email address.' });
+    }
 
-    return res.status(201).json({ message: 'User registered successfully', user });
+    const userCredential = await createUserWithEmailAndPassword(getAuth(), email, password);
+
+    await sendEmailVerification(userCredential.user);
+
+    res.status(200).json({
+      message: 'User registered successfully. Please check your email for verification instructions.',
+      user: userCredential.user,
+      emailVerificationSent: true,
+    });
   } catch (error) {
-    console.error('Error registering user:', error);
-
     let errorMessage = 'Error registering user';
+
     if (error.code === 'auth/invalid-email') {
-      errorMessage = 'Invalid email format';
+      errorMessage = 'Invalid email format. Please provide a valid email address.';
     } else if (error.code === 'auth/email-already-in-use') {
-      errorMessage = 'Email is already in use';
+      errorMessage = 'Email is already in use. Please use a different email.';
     }
 
-    return res.status(500).json({ message: errorMessage });
+    res.status(500).json({ message: errorMessage, emailVerificationSent: false });
   }
 };
 
-export default handler;
+export default handleUserRegistration;
