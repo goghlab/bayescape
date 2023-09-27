@@ -1,7 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import axios from 'axios';
-import { useRouter } from 'next/router'; // Import the useRouter hook
+import handleUserRegistration from '../../pages/api/signup';
+import { initializeApp } from 'firebase/app';
+import { useRouter } from 'next/router';
+import firebaseConfig from '../../pages/firebase/firebaseConfig';
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 
 const SignUpForm = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +19,8 @@ const SignUpForm = () => {
   });
 
   const [passwordMatchError, setPasswordMatchError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const router = useRouter(); // Initialize the router
 
   const handleChange = (e) => {
@@ -31,48 +38,48 @@ const SignUpForm = () => {
       const { firstName, lastName, email, password, confirmPassword, subscribe } = formData;
 
       if (password !== confirmPassword) {
+        console.log('Passwords do not match.');
         setPasswordMatchError('Passwords do not match. Please try again.');
         return;
       } else {
         setPasswordMatchError('');
       }
 
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        setPasswordMatchError('Invalid email format. Please provide a valid email address.');
-        return;
-      }
-
-      // Make Axios POST request
-      const response = await axios.post('/api/signup', {
-        firstName,
-        lastName,
-        email,
-        password,
-        confirmPassword,
-        subscribe,
-      }, {
-        headers: {
-          'Content-Type': 'application/json',
-        }
+      // Call the handleUserRegistration function
+      const response = await handleUserRegistration({
+        body: {
+          firstName,
+          lastName,
+          email,
+          password,
+          confirmPassword,
+          subscribe,
+        },
       });
 
-      console.log('Axios POST request response:', response.data);
+      setSuccessMessage(response.message);
 
-      // Redirect to login after successful signup and account activation
-      router.push('/others-pages/login');
+      // Redirect only after setting success message
+      // This ensures that the success message is displayed before the redirect happens
+      router.push('/');
     } catch (error) {
-      console.error('User registration failed.', error.message);
       let errorMessage = 'Error registering user';
-      if (error.response && error.response.data && error.response.data.message) {
-        errorMessage = error.response.data.message;
+      if (error.message) {
+        errorMessage = error.message;
       }
-      setPasswordMatchError(errorMessage);
+      setErrorMessage(errorMessage);
     }
   };
 
+  useEffect(() => {
+    if (successMessage) {
+      // Redirect to a specific path after successful registration
+      router.push('/');
+    }
+  }, [successMessage, router]);
+
   return (
-    <form className="row y-gap-20" onSubmit={handleSubmit}>
+    <form className="row y-gap-20" onSubmit={handleSubmit} onReset={() => setSuccessMessage('')}>
       <div className="col-12">
         <h1 className="text-22 fw-500">灣程BayEscape用戶註冊</h1>
         <p className="mt-10">
@@ -133,10 +140,7 @@ const SignUpForm = () => {
 
       <div className="col-12">
         <div className="form-input">
-          <label
-            htmlFor="password"
-            className="lh-1 text-14 text-light-1"
-          >
+          <label htmlFor="password" className="lh-1 text-14 text-light-1">
             密碼
           </label>
           <input
@@ -153,10 +157,7 @@ const SignUpForm = () => {
 
       <div className="col-12">
         <div className="form-input">
-          <label
-            htmlFor="confirmPassword"
-            className="lh-1 text-14 text-light-1"
-          >
+          <label htmlFor="confirmPassword" className="lh-1 text-14 text-light-1">
             確認密碼
           </label>
           <input
@@ -199,11 +200,9 @@ const SignUpForm = () => {
       </div>
 
       <div className="col-12">
-        {passwordMatchError && (
-          <div className="error-message" style={{ color: 'red' }}>
-            * {getErrorMessage()}
-          </div>
-        )}
+        {successMessage && <div className="success-message">{successMessage}</div>}
+        {passwordMatchError && <div className="error-message">{passwordMatchError}</div>}
+        {errorMessage && <div className="error-message">{errorMessage}</div>}
       </div>
 
       <div className="col-12">

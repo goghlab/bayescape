@@ -5,7 +5,7 @@ const firebaseConfig = {
   storageBucket: "bayescape851013.appspot.com",
   messagingSenderId: "91014614162",
   appId: "1:91014614162:web:746fe48da864855d302a4b",
-  measurementId: "G-3EYK1T0KE3"
+  measurementId: "G-3EYK1T0KE3" 
 };
 
 export default firebaseConfig;
