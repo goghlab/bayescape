@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import handleUserRegistration from '../../pages/api/signup';
-import { initializeApp } from 'firebase/app';
 import { useRouter } from 'next/router';
+import { initializeApp } from 'firebase/app';
 import firebaseConfig from '../../pages/firebase/firebaseConfig';
 
 // Initialize Firebase
@@ -16,6 +16,7 @@ const SignUpForm = () => {
     password: '',
     confirmPassword: '',
     subscribe: false,
+    // ...other form input fields...
   });
 
   const [passwordMatchError, setPasswordMatchError] = useState('');
@@ -38,14 +39,12 @@ const SignUpForm = () => {
       const { firstName, lastName, email, password, confirmPassword, subscribe } = formData;
 
       if (password !== confirmPassword) {
-        console.log('Passwords do not match.');
-        setPasswordMatchError('Passwords do not match. Please try again.');
+        setPasswordMatchError('密碼不符。請再試一次。');
         return;
       } else {
         setPasswordMatchError('');
       }
 
-      // Call the handleUserRegistration function
       const response = await handleUserRegistration({
         body: {
           firstName,
@@ -54,19 +53,21 @@ const SignUpForm = () => {
           password,
           confirmPassword,
           subscribe,
+          // ...other form input fields...
         },
       });
 
       setSuccessMessage(response.message);
 
-      // Redirect only after setting success message
-      // This ensures that the success message is displayed before the redirect happens
-      router.push('/');
     } catch (error) {
-      let errorMessage = 'Error registering user';
-      if (error.message) {
-        errorMessage = error.message;
+      let errorMessage = '註冊用戶時發生錯誤';
+
+      if (error.message === '密碼不符合要求，請嘗試更強的密碼。') {
+        errorMessage = '密碼不符合要求，請嘗試更強的密碼。';
+      } else if (error.message === '此電子郵件已在使用中。請使用其他電子郵件。') {
+        errorMessage = '此電子郵件已在使用中。請使用其他電子郵件。';
       }
+
       setErrorMessage(errorMessage);
     }
   };
@@ -76,7 +77,7 @@ const SignUpForm = () => {
       // Redirect to a specific path after successful registration
       router.push('/');
     }
-  }, [successMessage, router]);
+  }, [successMessage]);
 
   return (
     <form className="row y-gap-20" onSubmit={handleSubmit} onReset={() => setSuccessMessage('')}>
@@ -199,10 +200,12 @@ const SignUpForm = () => {
         </div>
       </div>
 
+      {/* ...other form input fields... */}
+
       <div className="col-12">
         {successMessage && <div className="success-message">{successMessage}</div>}
-        {passwordMatchError && <div className="error-message">{passwordMatchError}</div>}
-        {errorMessage && <div className="error-message">{errorMessage}</div>}
+        {passwordMatchError && <div className="error-message" style={{ color: 'red' }}>{passwordMatchError}</div>}
+        {errorMessage && <div className="error-message" style={{ color: 'red' }}>{errorMessage}</div>}
       </div>
 
       <div className="col-12">

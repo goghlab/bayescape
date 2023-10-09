@@ -1,7 +1,16 @@
 import { createUserWithEmailAndPassword, getAuth, sendEmailVerification } from 'firebase/auth';
 import { setDoc, doc, runTransaction, getFirestore } from 'firebase/firestore';
 import { initializeApp } from 'firebase/app';
-import firebaseConfig from '../firebase/firebaseConfig';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCJgBZmZwjlnplli6OV6ml1_ImqBVMAxJQ",
+  authDomain: "bayescape851013.firebaseapp.com",
+  projectId: "bayescape851013",
+  storageBucket: "bayescape851013.appspot.com",
+  messagingSenderId: "91014614162",
+  appId: "1:91014614162:web:746fe48da864855d302a4b",
+  measurementId: "G-3EYK1T0KE3" 
+};
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
@@ -15,25 +24,20 @@ const validateEmail = (email) => {
   return emailRegex.test(email);
 };
 
-const handleUserRegistration = async (req, res) => {
+const handleUserRegistration = async ({ body }) => {
   try {
-    console.log('Received request:', req.body);
-
-    const { firstName, lastName, email, password, confirmPassword } = req.body;
+    const { firstName, lastName, email, password, confirmPassword } = body;
 
     if (!validatePassword(password, confirmPassword)) {
-      console.log('Password validation failed.');
-      return res.status(400).json({ message: 'Passwords do not match or are too weak.' });
+      throw new Error('密碼不符或太弱。請再試一次。');
     }
 
     if (!validateEmail(email)) {
-      console.log('Email validation failed.');
-      return res.status(400).json({ message: 'Invalid email format. Please provide a valid email address.' });
+      throw new Error('電子郵件格式無效。請提供有效的電子郵件地址。');
     }
 
-    const userCredential = await createUserWithEmailAndPassword(getAuth(), email, password);
-
-    console.log('User registered successfully:', userCredential.user);
+    const auth = getAuth();
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
 
     const userId = userCredential.user.uid;
     const user = { email, firstName, lastName, password, subscribe: false };
@@ -45,23 +49,18 @@ const handleUserRegistration = async (req, res) => {
 
     await sendEmailVerification(userCredential.user);
 
-    res.status(200).json({
-      message: 'User registered successfully. Please check your email for verification instructions.',
+    return {
+      status: 'success',
+      message: '用戶註冊成功。請檢查您的電子郵件以獲取驗證指示。',
       user: userCredential.user,
       emailVerificationSent: true,
-    });
+    };
   } catch (error) {
-    console.error('Error registering user:', error);
-
-    let errorMessage = 'Error registering user';
-
-    if (error.code === 'auth/invalid-email') {
-      errorMessage = 'Invalid email format. Please provide a valid email address.';
-    } else if (error.code === 'auth/email-already-in-use') {
-      errorMessage = 'Email is already in use. Please use a different email.';
+    if (error.code === 'auth/email-already-in-use') {
+      throw new Error('此電子郵件已在使用中。請使用其他電子郵件。');
+    } else {
+      throw new Error('註冊用戶時發生錯誤: ' + error.message);
     }
-
-    res.status(500).json({ message: errorMessage, emailVerificationSent: false });
   }
 };
 
