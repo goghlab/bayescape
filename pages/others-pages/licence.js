@@ -29,7 +29,7 @@ const licence = () => {
           <Image
             width={1920}
             height={400}
-            src="/img/pages/about/1.png"
+            src="/img/pages/about/111.png"
             alt="image"
             priority
           />

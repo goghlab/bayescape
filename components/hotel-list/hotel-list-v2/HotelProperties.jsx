@@ -1,9 +1,41 @@
-import { hotelsData } from "../../../data/hotels";
+import { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper";
 import Image from "next/image";
 import Link from "next/link";
 
+const HotelProperties = () => {
+  const [hotels, setHotels] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchHotels = async () => {
+      try {
+        const response = await fetch('https://example.com/api/hotels'); // Replace with your API endpoint
+        if (!response.ok) {
+          throw new Error('Could not fetch hotels data');
+        }
+        const data = await response.json();
+        setHotels(data);
+        setLoading(false);
+      } catch (error) {
+        setError(error.message);
+        setLoading(false);
+      }
+    };
+
+    fetchHotels();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+  
 const HotelProperties = () => {
   return (
     <>

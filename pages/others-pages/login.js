@@ -5,8 +5,19 @@ import DefaultHeader from "../../components/header/default-header";
 import DefaultFooter from "../../components/footer/default";
 import LoginWithSocial from "../../components/common/LoginWithSocial";
 import LoginForm from "../../components/common/LoginForm";
+import { useState } from "react"; // Import the useState hook
 
 const LogIn = () => {
+  // Manage authentication state
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  // Function to handle authentication
+  const handleAuthentication = () => {
+    // Perform authentication logic here
+    // Set isAuthenticated to true if authentication is successful
+    setIsAuthenticated(true);
+  };
+
   return (
     <>
       <Seo pageTitle="Login" />
@@ -28,13 +39,12 @@ const LogIn = () => {
 
                 <div className="row y-gap-20 pt-30">
                   <div className="col-12">
-                    <div className="text-center">or sign in with</div>
+                    <div className="text-center">或使用以下方式登录</div>
                   </div>
                   <LoginWithSocial />
                   <div className="col-12">
                     <div className="text-center px-30">
-                      By creating an account, you agree to our Terms of Service
-                      and Privacy Statement.
+                     透過建立帳戶，您同意我們的服務條款和隱私聲明.
                     </div>
                   </div>
                 </div>
@@ -51,6 +61,17 @@ const LogIn = () => {
 
       <DefaultFooter />
       {/* End Call To Actions Section */}
+      
+      {isAuthenticated ? (
+        // Render DynamicHome when authenticated
+        <DynamicHome />
+      ) : (
+        // Display a message or redirect to the login page when not authenticated
+        <div>
+          <p>You are not authenticated. Please log in to access DynamicHome.</p>
+          {/* You can also include a login button or a link to the login page */}
+        </div>
+      )}
     </>
   );
 };

@@ -8,7 +8,7 @@ export const hotelsData = [
     location: "Westminster Borough, London",
     ratings: "4.7",
     numberOfReviews: "3014",
-    price: "72",
+    price: "75",
     delayAnimation: "100",
   },
   {

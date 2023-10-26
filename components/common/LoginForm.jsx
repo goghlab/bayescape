@@ -49,11 +49,11 @@ const LoginForm = () => {
   return (
     <form className="row y-gap-20" onSubmit={handleSubmit}>
       <div className="col-12">
-        <h1 className="text-22 fw-500">Welcome back</h1>
+        <h1 className="text-22 fw-500">歡迎回來</h1>
         <p className="mt-10">
-          Don&apos;t have an account yet?{" "}
+           尚未擁有帳號嗎？{" "}
           <a href="/others-pages/signup" className="text-blue-1">
-            Sign up for free
+           免費註冊
           </a>
         </p>
       </div>
@@ -61,14 +61,14 @@ const LoginForm = () => {
       <div className="col-12">
         <div className="form-input">
           <input type="text" required value={email} onChange={handleEmailChange} />
-          <label className="lh-1 text-14 text-light-1">Email</label>
+          <label className="lh-1 text-14 text-light-1">電子郵件</label>
         </div>
       </div>
 
       <div className="col-12">
         <div className="form-input">
           <input type="password" required value={password} onChange={handlePasswordChange} />
-          <label className="lh-1 text-14 text-light-1">Password</label>
+          <label className="lh-1 text-14 text-light-1">密碼</label>
         </div>
       </div>
 
@@ -78,13 +78,13 @@ const LoginForm = () => {
 
       <div className="col-12">
         <a href="#" className="text-14 fw-500 text-blue-1 underline">
-          Forgot your password?
+           忘記密碼了嗎？
         </a>
       </div>
 
       <div className="col-12">
         <button type="submit" className="button py-20 -dark-1 bg-blue-1 text-white w-100">
-          Sign In <div className="icon-arrow-top-right ml-15" />
+           登入 <div className="icon-arrow-top-right ml-15" />
         </button>
       </div>
     </form>
