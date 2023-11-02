@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Bayescape - Your Travel Companion
+Bayescape is a dynamic travel and accommodation platform built with Next.js. It offers a seamless experience for travelers to discover and book hotels in the beautiful city of Shenzhen. Whether you're planning a business trip or a leisurely escape, Bayescape provides a user-friendly interface to make your travel plans a breeze.
 
-## Getting Started
+Getting Started
+To start your Bayescape development environment, follow these steps:
 
-First, run the development server:
+Clone this repository to your local machine:
 
-```bash
+bash
+Copy code
+git clone https://github.com/goghlab/bayescape.git
+cd bayescape
+Install the project dependencies:
+
+bash
+Copy code
+npm install
+# or
+yarn install
+Run the development server:
+
+bash
+Copy code
 npm run dev
 # or
 yarn dev
-```
+Open http://localhost:3000 in your web browser to view the application.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+You can start editing the pages by modifying the files in the pages directory. The application will auto-update as you make changes.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+API Routes
+Bayescape uses API routes to handle various functionalities. You can access API routes at http://localhost:3000/api. Files in the pages/api directory are treated as API routes, providing dynamic functionality for your application.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Font Optimization
+This project utilizes next/font to automatically optimize and load the Inter font, a custom Google Font. This ensures a smooth and visually pleasing experience for users.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Learn More
+To explore more about Next.js and its features, you can refer to the following resources:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Next.js Documentation: Learn about Next.js features and API.
+Learn Next.js: Access an interactive Next.js tutorial to deepen your knowledge.
+Feel free to check out the Next.js GitHub repository and consider contributing to this open-source project.
 
-## Learn More
+Deployment on Vercel
+For a hassle-free deployment of your Bayescape app, you can leverage the Vercel Platform provided by the creators of Next.js. Detailed information on deploying Next.js applications can be found in the Next.js deployment documentation.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Thank you for choosing Bayescape, and we hope it enhances your travel experiences in Shenzhen! If you have any questions or feedback, please feel free to reach out.
