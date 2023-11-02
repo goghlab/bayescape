@@ -5,24 +5,22 @@ const amadeus = new Amadeus({
   clientSecret: 'yj97vc075fY951z1', // Replace with your actual clientSecret
 });
 
-const cityCode = 'SZX'; // Shenzhen city code
-
-async function searchHotels() {
+async function searchHotels(cityCode) {
   try {
-    console.log('Making API call to Amadeus...'); // Log that the API call is being made
+    console.log('Making API call to Amadeus...');
+
     const response = await amadeus.referenceData.locations.hotels.byCity.get({
       cityCode: cityCode,
     });
 
-    console.log('API call successful!'); // Log that the API call was successful
+    console.log('API call successful!');
 
-    // Handle the response data here
-    console.log('Response data:', response.data); // Log the response data
+    // Handle the response data here or return it to the caller
+    return response.data;
   } catch (error) {
-    // Handle errors
-    console.error('Error:', error); // Log the error
+    console.error('Error:', error);
+    throw new Error('Failed to fetch hotel data'); // You can customize the error message as needed
   }
 }
 
-// Call the function to perform the hotel search
-searchHotels();
+module.exports = { searchHotels };

@@ -1,18 +1,27 @@
-import Wrapper from "./layout/wrapper";
-import Home9 from "./home/home_9";
-const EventEmitter = require('events');
+import React, { useEffect } from 'react';
+import { I18nextProvider } from 'react-i18next';
+import { useTranslation } from 'react-i18next'; // Import useTranslation
+import i18n from '../i18n';  // Import your i18n configuration
+import Wrapper from './layout/wrapper'; // Adjust the path to your Wrapper component
+import Home9 from "./home/home_9";// Adjust the path to your Home9 component
 
+const EventEmitter = require('events');
 EventEmitter.defaultMaxListeners = 30;
 
-// Create an instance of EventEmitter and set the maximum listeners for this specific instance
-const myEmitter = new EventEmitter();
-myEmitter.setMaxListeners(30);
-
 const MainRoot = () => {
+  const { t, i18n } = useTranslation();
+
+  useEffect(() => {
+    console.log('Current language:', i18n.language);
+  }, [i18n]);
+
+
   return (
-    <Wrapper>
-      <Home9 />
-    </Wrapper>
+    <I18nextProvider i18n={i18n}>
+      <Wrapper>
+        <Home9 />
+      </Wrapper>
+    </I18nextProvider>
   );
 };
 

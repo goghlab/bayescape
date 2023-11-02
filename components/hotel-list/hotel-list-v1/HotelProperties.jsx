@@ -1,14 +1,19 @@
-import { hotelsData } from "../../../data/hotels";
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper";
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslation } from 'react-i18next';
 
 const HotelProperties = ({ items }) => {
+  const { t, i18n } = useTranslation();
+
+  console.log("Current language:", i18n.language);
+
   return (
     <>
-      {items.map((item) => (
-        <div className="col-12" key={item?.id}>
+      {items.map((item, index) => (
+        <div className="col-12" key={item?.id || index}>
           <div className="border-top-light pt-30">
             <div className="row x-gap-20 y-gap-20">
               <div className="col-md-auto">
@@ -50,7 +55,8 @@ const HotelProperties = ({ items }) => {
 
               <div className="col-md">
                 <h3 className="text-18 lh-16 fw-500">
-                  {item?.title}
+                  {t(item?.name)}
+                  {item?.name && console.log(t(item?.name))} {/* Log the translated text */}
                   <br className="lg:d-none" /> {item?.location}
                   <div className="d-inline-block ml-10">
                     <i className="icon-star text-10 text-yellow-2"></i>

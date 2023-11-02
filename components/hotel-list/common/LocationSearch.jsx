@@ -46,17 +46,17 @@ const SearchBar = () => {
       address: "Zhongshan, China",
     },
     {
-      id: 8,
+      id: 9,
       name: "江門",
       address: "Jiangmen, China",
     },
     {
-      id: 9,
+      id: 10,
       name: "佛山",
       address: "Foshan, China",
     },
     {
-      id: 10,
+      id: 11,
       name: "肇慶",
       address: "Zhaoqing, China",
     },

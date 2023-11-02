@@ -16,7 +16,11 @@ const amadeus = new Amadeus({
 // Define a route for /amadeus
 app.get('/amadeus', async (req, res) => {
   try {
-    const cityCode = 'SZX'; // Replace with your desired city code
+    const cityCode = req.query.cityCode; // Get the cityCode from query parameters
+    if (!cityCode) {
+      return res.status(400).json({ error: 'City code is required' });
+    }
+
     const response = await amadeus.referenceData.locations.hotels.byCity.get({
       cityCode: cityCode,
     });
