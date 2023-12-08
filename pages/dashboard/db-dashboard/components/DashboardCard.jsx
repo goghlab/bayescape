@@ -21,7 +21,7 @@ const data = [
     title: "Services",
     amount: "22,786",
     description: "Total bookable services",
-    icon: "/img/dashboard/icons/04.png",
+    icon: "/img/dashboard/icons/04.pnga",
   },
 ];
 

@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import Link from "next/link"; // Import Link from next/link
 import CallToActions from "../../components/common/CallToActions";
 import Seo from "../../components/common/Seo";
 import DefaultHeader from "../../components/header/default-header";
@@ -33,7 +34,7 @@ const SignUp = () => {
                   <LoginWithSocial />
                   <div className="col-12">
                     <div className="text-center px-30">
-                     通過建立帳戶，您同意我們的服務條款和隱私聲明。
+                      通過建立帳戶，您同意我們的服務條款和隱私聲明。
                     </div>
                   </div>
                 </div>
@@ -54,4 +55,5 @@ const SignUp = () => {
   );
 };
 
+// Wrap the relevant <a> element with the <Link> component
 export default dynamic(() => Promise.resolve(SignUp), { ssr: false });
