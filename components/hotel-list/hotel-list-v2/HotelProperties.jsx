@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper";
-import Image from "next/image";
-import Link from "next/link";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const HotelProperties = () => {
   const [hotels, setHotels] = useState([]);
@@ -35,18 +35,17 @@ const HotelProperties = () => {
   if (error) {
     return <div>Error: {error}</div>;
   }
-  
-const HotelProperties = () => {
+
   return (
     <>
-      {hotelsData.slice(0, 7).map((item) => (
+      {hotels.slice(0, 7).map((item) => (
         <div className="col-12" key={item?.id}>
           <div className="border-top-light pt-30">
             <div className="row x-gap-20 y-gap-20">
               <div className="col-md-auto">
                 <div className="cardImage ratio ratio-1:1 w-250 md:w-1/1 rounded-4">
                   <div className="cardImage__content">
-                    <div className="cardImage-slider rounded-4  custom_inside-slider">
+                    <div className="cardImage-slider rounded-4 custom_inside-slider">
                       <Swiper
                         className="mySwiper"
                         modules={[Pagination, Navigation]}
@@ -85,11 +84,9 @@ const HotelProperties = () => {
                   {item?.title}
                   <br className="lg:d-none" /> {item?.location}
                   <div className="d-inline-block ml-10">
-                    <i className="icon-star text-10 text-yellow-2"></i>
-                    <i className="icon-star text-10 text-yellow-2"></i>
-                    <i className="icon-star text-10 text-yellow-2"></i>
-                    <i className="icon-star text-10 text-yellow-2"></i>
-                    <i className="icon-star text-10 text-yellow-2"></i>
+                    {[...Array(5)].map((_, i) => (
+                      <i key={i} className="icon-star text-10 text-yellow-2"></i>
+                    ))}
                   </div>
                 </h3>
 
@@ -186,7 +183,7 @@ const HotelProperties = () => {
                     href={`/hotel/hotel-single-v2/${item.id}`}
                     className="button -md -dark-1 bg-blue-1 text-white mt-24"
                   >
-                    See Availability{" "}
+                    See Availability{' '}
                     <div className="icon-arrow-top-right ml-15"></div>
                   </Link>
                 </div>
