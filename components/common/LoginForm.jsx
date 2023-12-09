@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { signInWithEmailAndPassword, getAuth } from 'firebase/auth';
 import { useRouter } from 'next/router';
 import { initializeApp } from 'firebase/app';
+import Link from 'next/link'; // Import the Link component
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
@@ -19,14 +20,8 @@ const LoginForm = () => {
     setError(null); // Clear error on password change
   };
 
- const firebaseConfig = {
-    apiKey: "AIzaSyCJgBZmZwjlnplli6OV6ml1_ImqBVMAxJQ",
-    authDomain: "bayescape851013.firebaseapp.com",
-    projectId: "bayescape851013",
-    storageBucket: "bayescape851013.appspot.com",
-    messagingSenderId: "91014614162",
-    appId: "1:91014614162:web:746fe48da864855d302a4b",
-    measurementId: "G-3EYK1T0KE3"
+  const firebaseConfig = {
+    // Your Firebase configuration
   };
 
   const auth = getAuth(initializeApp(firebaseConfig));
@@ -51,10 +46,10 @@ const LoginForm = () => {
       <div className="col-12">
         <h1 className="text-22 fw-500">歡迎回來</h1>
         <p className="mt-10">
-           尚未擁有帳號嗎？{" "}
-          <a href="/others-pages/signup" className="text-blue-1">
-           免費註冊
-          </a>
+          尚未擁有帳號嗎？{' '}
+          <Link href="/others-pages/signup">
+            <a className="text-blue-1">免費註冊</a>
+          </Link>
         </p>
       </div>
 
@@ -78,13 +73,13 @@ const LoginForm = () => {
 
       <div className="col-12">
         <a href="#" className="text-14 fw-500 text-blue-1 underline">
-           忘記密碼了嗎？
+          忘記密碼了嗎？
         </a>
       </div>
 
       <div className="col-12">
         <button type="submit" className="button py-20 -dark-1 bg-blue-1 text-white w-100">
-           登入 <div className="icon-arrow-top-right ml-15" />
+          登入 <div className="icon-arrow-top-right ml-15" />
         </button>
       </div>
     </form>
