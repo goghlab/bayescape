@@ -10,7 +10,6 @@ import RercentBooking from './components/RercentBooking';
 import Footer from '../common/Footer';
 import { useRouter } from 'next/router';
 import { fetchUserData } from './userUtils';  // Import the utility function
-import userUtils from './userUtils';
 
 const Dashboard = () => {
   const router = useRouter();
