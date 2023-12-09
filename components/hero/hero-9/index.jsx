@@ -3,7 +3,7 @@ import { Navigation } from "swiper";
 import MainFilterSearchBox from "./MainFilterSearchBox";
 import { Parallax } from "react-parallax";
 
-const index = () => {
+const Index = () => {
   return (
     <>
       <section className="masthead -type-9">
@@ -37,14 +37,14 @@ const index = () => {
                         data-aos="fade-up"
                         data-aos-delay="100"
                       >
-                        "盡情享受城市的最佳優惠，與Bayescape一同體驗"
+                        {"\"盡情享受城市的最佳優惠，與Bayescape一同體驗\""}
                       </div>
                       <h1
                         className="text-60 lg:text-60 sm:text-40 text-white"
                         data-aos="fade-up"
                         data-aos-delay="300"
                       >
-                       ENJOY CITIES BEST DEALS
+                        {"ENJOY CITIES BEST DEALS"}
                       </h1>
                     </div>
                   </div>
@@ -71,8 +71,8 @@ const index = () => {
         <a href="#secondSection" className="masthead__scroll">
           <div className="d-flex items-center">
             <div className="text-white lh-15 text-right mr-10">
-              <div className="fw-500">向下滾動</div>
-              <div className="text-15">探索更多</div>
+              <div className="fw-500">{"向下滾動"}</div>
+              <div className="text-15">{"探索更多"}</div>
             </div>
             <div className="-icon">
               <div />
@@ -94,4 +94,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;
