@@ -53,7 +53,7 @@ const home_9 = () => {
               <div className="sectionTitle -md">
                 <h2 className="sectionTitle__title">酒店推薦</h2>
                 <p className=" sectionTitle__text mt-5 sm:mt-0">
-                 精心挑選的熱門酒店
+                  精心挑選的熱門酒店
                 </p>
               </div>
             </div>
@@ -78,7 +78,7 @@ const home_9 = () => {
               <div className="sectionTitle -md">
                 <h2 className="sectionTitle__title">熱門目的地</h2>
                 <p className=" sectionTitle__text mt-5 sm:mt-0">
-                   這些熱門旅遊地點提供了眾多選擇
+                  這些熱門旅遊地點提供了眾多選擇
                 </p>
               </div>
             </div>
@@ -111,10 +111,10 @@ const home_9 = () => {
             <div className="col-xl-4 col-lg-5">
               <h2 className="text-30 fw-600">為什麼選擇我們</h2>
               <p className="mt-5">
-              "我們提供最佳價格保證，輕鬆快捷的訂房流程，優越的地理位置以及全天候的客戶關懷服務。
+                {"\""}我們提供最佳價格保證，輕鬆快捷的訂房流程，優越的地理位置以及全天候的客戶關懷服務。
               </p>
               <p className="text-dark-1 mt-40 sm:mt-20">
-              為什麼選擇我們？因為我們致力於為您提供最優惠的價格，無論您前往何處，您都可以放心預訂，並享受無憂的旅程。選擇我們，您將體驗到無與倫比的便利和舒適，讓每一次旅行都成為美好而難忘的回憶。"
+                為什麼選擇我們？因為我們致力於為您提供最優惠的價格，無論您前往何處，您都可以放心預訂，並享受無憂的旅程。選擇我們，您將體驗到無與倫比的便利和舒適，讓每一次旅行都成為美好而難忘的回憶。{"\""}
               </p>
               <div className="d-inline-block mt-40 sm:mt-20">
                 <a
