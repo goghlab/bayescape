@@ -7,8 +7,8 @@ module.exports = function (app) {
       target: 'https://test.api.amadeus.com',
       changeOrigin: true,
       onProxyReq: (proxyReq) => {
-        // Remove the User-Agent header
-        proxyReq.removeHeader('User-Agent');
+        // Modify the User-Agent header
+        proxyReq.setHeader('User-Agent', 'Mozilla/5.0 (compatible; MyClient/1.0; +myclient@example.com)');
       },
     })
   );
