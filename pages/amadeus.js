@@ -5,11 +5,10 @@ const AmadeusPage = () => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:5001/amadeus') // Use the correct backend URL
+    fetch('https://bayescape-goghlabs-projects.vercel.app/amadeus')
     .then((response) => response.json())
     .then((result) => setData(result))
-    .catch((error) => console.error(error));
-  }, []);
+    .catch((error) => console.error(error));  
 
   return (
     <div>
