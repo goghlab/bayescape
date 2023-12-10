@@ -6,6 +6,10 @@ module.exports = function (app) {
     createProxyMiddleware({
       target: 'https://test.api.amadeus.com',
       changeOrigin: true,
+      onProxyReq: (proxyReq) => {
+        // Remove the User-Agent header
+        proxyReq.removeHeader('User-Agent');
+      },
     })
   );
 };
