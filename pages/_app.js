@@ -10,8 +10,9 @@ import "aos/dist/aos.css";
 import "../styles/index.scss";
 import { Provider } from "react-redux";
 import { store } from "../app/store";
-import { I18nextProvider } from 'react-i18next'; // Import I18nextProvider
+import { I18nextProvider } from 'react-i18next';
 import i18n from '../i18n';
+import Head from 'next/head';
 
 if (typeof window !== "undefined") {
   require("bootstrap/dist/js/bootstrap");
@@ -27,8 +28,11 @@ export default function App({ Component, pageProps }) {
 
   return (
     <main>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Head>
       <Provider store={store}>
-        <I18nextProvider i18n={i18n}> {/* Wrap your app with I18nextProvider */}
+        <I18nextProvider i18n={i18n}>
           <Component {...pageProps} />
           <SrollTop />
         </I18nextProvider>
