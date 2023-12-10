@@ -9,7 +9,6 @@ import Link from 'next/link';
 import RercentBooking from './components/RercentBooking';
 import Footer from '../common/Footer';
 import { useRouter } from 'next/router';
-import { fetchUserData } from './userUtils';  // Import the utility function
 
 const Dashboard = () => {
   const router = useRouter();
