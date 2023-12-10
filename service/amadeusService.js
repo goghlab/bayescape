@@ -19,7 +19,7 @@ async function searchHotels(cityCode) {
     return response.data;
   } catch (error) {
     console.error('Error:', error);
-    throw new Error('Failed to fetch hotel data'); // You can customize the error message as needed
+    throw new Error('Fuck the hotel data'); // You can customize the error message as needed
   }
 }
 

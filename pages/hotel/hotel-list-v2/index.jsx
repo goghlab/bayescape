@@ -65,7 +65,7 @@ const Index = () => {
 
   return (
     <>
-      <Seo pageTitle="Hotel List v2" />
+      <Seo pageTitle="``深圳酒店住宿``" />
       <Header11 />
 
       <section className="pt-40 pb-40 bg-blue-2">
