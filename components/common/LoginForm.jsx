@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { signInWithEmailAndPassword, getAuth } from 'firebase/auth';
 import { useRouter } from 'next/router';
 import { initializeApp } from 'firebase/app';
+
 import Link from 'next/link'; // Import the Link component
 
 const LoginForm = () => {
@@ -21,7 +22,13 @@ const LoginForm = () => {
   };
 
   const firebaseConfig = {
-    // Your Firebase configuration
+    apiKey: "AIzaSyCJgBZmZwjlnplli6OV6ml1_ImqBVMAxJQ",
+    authDomain: "bayescape851013.firebaseapp.com",
+    projectId: "bayescape851013",
+    storageBucket: "bayescape851013.appspot.com",
+    messagingSenderId: "91014614162",
+    appId: "1:91014614162:web:746fe48da864855d302a4b",
+    measurementId: "G-3EYK1T0KE3" 
   };
 
   const auth = getAuth(initializeApp(firebaseConfig));
@@ -47,7 +54,7 @@ const LoginForm = () => {
         <h1 className="text-22 fw-500">歡迎回來</h1>
         <p className="mt-10">
           尚未擁有帳號嗎？{' '}
-          <Link href="/others-pages/signup">
+          <Link href="/others-pages/signup" legacyBehavior>
             <a className="text-blue-1">免費註冊</a>
           </Link>
         </p>

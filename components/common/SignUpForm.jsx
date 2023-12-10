@@ -3,7 +3,7 @@ import Link from 'next/link';
 import handleUserRegistration from '../../pages/api/signup';
 import { useRouter } from 'next/router';
 import { initializeApp } from 'firebase/app';
-import firebaseConfig from '../../pages/firebase/firebaseConfig';
+import firebaseConfig from '../../utils/firebaseConfig';
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
