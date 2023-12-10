@@ -6,9 +6,10 @@ const AmadeusPage = () => {
 
   useEffect(() => {
     fetch('https://bayescape-goghlabs-projects.vercel.app/amadeus')
-    .then((response) => response.json())
-    .then((result) => setData(result))
-    .catch((error) => console.error(error));  
+      .then((response) => response.json())
+      .then((result) => setData(result))
+      .catch((error) => console.error(error));
+  }, []); // <- Added closing brace here
 
   return (
     <div>
