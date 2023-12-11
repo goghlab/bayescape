@@ -43,7 +43,7 @@ const Index = () => {
 
   useEffect(() => {
     // Fetch hotel data when the component mounts
-    searchHotels("SZX") // Pass "SZX" as the city code for Shenzhen
+    searchHotels("SZX") 
       .then((data) => {
         setHotelData(data);
         setLoading(false); // Data loading complete

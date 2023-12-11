@@ -12,7 +12,7 @@ const HotelProperties = () => {
   useEffect(() => {
     const fetchHotels = async () => {
       try {
-        const response = await fetch('https://example.com/api/hotels'); // Replace with your API endpoint
+        const response = await fetch('https://test.api.amadeus.com'); // Replace with your API endpoint
         if (!response.ok) {
           throw new Error('Could not fetch hotels data');
         }
@@ -158,7 +158,7 @@ const HotelProperties = () => {
                   <div className="col-auto">
                     <div className="text-14 lh-14 fw-500">Exceptional</div>
                     <div className="text-14 lh-14 text-light-1">
-                      3,014 reviews
+                      3,010 reviews
                     </div>
                   </div>
                   <div className="col-auto">
@@ -176,7 +176,7 @@ const HotelProperties = () => {
                     US${item?.price}
                   </div>
                   <div className="text-14 text-light-1 mt-5">
-                    +US$828 taxes and charges
+                    +US$8 taxes and charges
                   </div>
 
                   <Link
