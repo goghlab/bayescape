@@ -2,8 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
-// Enable CORS for specific origin (http://localhost:3000)
-app.use(cors({ origin: 'http://localhost:3000' }));
+// Allow requests from specified origins
+const allowedOrigins = ['http://localhost:3000', 'https://bayescape.vercel.app'];
+app.use(cors({ origin: allowedOrigins }));
 
 // Initialize the Amadeus client with your API credentials
 const Amadeus = require('amadeus');

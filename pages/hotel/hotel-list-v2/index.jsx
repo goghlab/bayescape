@@ -65,7 +65,7 @@ const Index = () => {
 
   return (
     <>
-      <Seo pageTitle="``深圳酒店住宿``" />
+      <Seo pageTitle="深圳酒店住宿" />
       <Header11 />
 
       <section className="pt-40 pb-40 bg-blue-2">
@@ -76,7 +76,7 @@ const Index = () => {
                 <br></br>
                 <br></br>
                 <br></br>
-                <h1 className="text-30 fw-600">深圳酒店住宿🏨</h1>
+                <h1 className="text-30 fw-600">深圳酒店住宿</h1>
               </div>
               <MainFilterSearchBox />
             </div>
